@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Project;
+use App\Task;
 
 class User extends Authenticatable
 {
@@ -32,5 +33,10 @@ class User extends Authenticatable
     public function projects()
     {
         return $this->hasMany('App\Project');
+    }
+
+    public function tasks()
+    {
+        return $this->hasManyThrough(Task::class, Project::class);
     }
 }

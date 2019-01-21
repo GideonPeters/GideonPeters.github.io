@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User as User;
+use App\Project as Project;
+use App\Task as Task;
+
 
 class UsersController extends Controller
 {
@@ -30,6 +33,7 @@ class UsersController extends Controller
     public function show($user_id)
     {
         $user = User::find($user_id);
+        $project = User::where('id',$user_id)->first()->projects;
 
         if(!$user) {
             return response()->json([
@@ -38,6 +42,8 @@ class UsersController extends Controller
                 'data' => []
             ], 200);
         }
+
+        $user->load("projects", "tasks");
 
         return response()->json([
             'status' => true,
