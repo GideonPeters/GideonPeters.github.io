@@ -13,7 +13,7 @@ class TasksController extends Controller
     {
         $tasks = Project::where('id',$project_id)->first()->tasks;
 
-        if (!$tasks) {
+        if ($tasks->isEmpty()) {
             return response()->json([
                 'status' => false,
                 'message' => 'No tasks for this project',
