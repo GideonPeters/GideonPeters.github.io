@@ -29,6 +29,7 @@ Route::post('/users/{user_id}/projects', 'ProjectsController@store');
 Route::put('/users/{user_id}/projects/{project_id}', 'ProjectsController@update');
 Route::delete('/users/{user_id}/projects/{project_id}', 'ProjectsController@destroy');
 
+Route::get('/users/{user_id}/projects/{project_id}/tasks', 'TasksController@index');
 Route::post('/users/{user_id}/projects/{project_id}/tasks', 'TasksController@store');
 Route::post('/users/{user_id}/projects/{project_id}/tasks/{task_id}', 'TasksController@update');
 // Route::put('/user/{task_id}', 'TasksController@update');

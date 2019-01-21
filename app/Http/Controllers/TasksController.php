@@ -9,6 +9,18 @@ use App\Project;
 class TasksController extends Controller
 {
     //
+    public function index(Request $request, $user_id, $project_id)
+    {
+        $tasks = Project::where('id',$project_id)->first()->tasks;
+
+        return response()->json([
+            'status' => true,
+            'message' => 'These are the tasks for this project',
+            'data' => $tasks
+        ], 200);
+
+    }
+
     public function store(Request $request, $user_id, $project_id)
     {
         $project = Project::find($project_id);
