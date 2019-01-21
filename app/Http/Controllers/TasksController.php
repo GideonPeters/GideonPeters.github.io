@@ -29,7 +29,7 @@ class TasksController extends Controller
 
     public function update(Request $request, $user_id, $project_id, $task_id)
     {
-        $task = Task::where('id', $task_id)->first();
+        $task = Task::where('id', $task_id)->first(); 
         
         // dd($task_id, $task);
 
