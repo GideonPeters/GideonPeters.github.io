@@ -29,6 +29,9 @@ class ProjectsController extends Controller
                 'data' => []
             ]);
         } 
+
+        $projects->load('tasks');
+
         return response()->json([
             'status' => true,
             'message' => 'These projects belong to this user',
