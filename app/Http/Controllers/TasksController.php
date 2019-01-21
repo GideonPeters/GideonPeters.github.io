@@ -13,6 +13,14 @@ class TasksController extends Controller
     {
         $tasks = Project::where('id',$project_id)->first()->tasks;
 
+        if (!$tasks) {
+            return response()->json([
+                'status' => false,
+                'message' => 'No tasks for this project',
+                'data' => []
+            ]);
+        }
+
         return response()->json([
             'status' => true,
             'message' => 'These are the tasks for this project',
